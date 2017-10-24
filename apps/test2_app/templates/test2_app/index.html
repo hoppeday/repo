@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Pet App!</h2>
+    <a href="/dashbord/add">Add a Pet!</a>
+
+    {%for pet in person.pets.all%}
+        <p>{{pet.name}}, the {{pet.pet_type}}<a href="delete/{{pet.id}}">Delete</a></p>
+    {%endfor%}
+
+
+    
+
+    <h2>Other Users!!</h2>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Count</th>
+        </tr>
+<!-- make sure to do the for loop before the row and end it after the row -->
+        {% for user in users%}
+        <tr>
+            <td><a href="userpage/{{user.id}}">{{user.first_name}}</a></td>  
+            <!-- We use userpage/{{user.id}} to get the id of the user so we can then direct them to their page -->
+            <td>{{user.pets.all.count}}</td> 
+        </tr>
+        {%endfor%}
+
+        <a href="/logout"> Log out!</a>
+        
+
+    </table>
+</body>
+</html>
